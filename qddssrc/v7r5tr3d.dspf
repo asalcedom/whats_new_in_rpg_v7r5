@@ -1,0 +1,102 @@
+     A                                      CA03(03)
+     A                                      INDARA
+     A          R HEADER
+     A                                  1  2USER
+     A                                  1 18'%CHARCOUNT, %LEFT, %RIGHT, %UPPER,-
+     A                                       %LOWER Test'
+     A                                      DSPATR(HI UL)
+     A                                  1 70DATE(*SYS *YY)
+     A                                      EDTCDE(Y)
+     A            PGM_NAME      10   O  2  2
+     A                                  2 72TIME
+     A          R PROMPT                    OVERLAY
+     A                                  4  3'Type a sentence. Include double by-
+     A                                      te characters like ''ç'', ''á''...:'
+     A                                      COLOR(BLU)
+     A            SENTENCE      30   B  5  3CHECK(LC)
+     A                                  7  3'Number of characters to return:'
+     A                                      COLOR(BLU)
+     A                                  8  3'Left. . . . :'
+     A            LEFT           2N 0B  8 17
+     A  40                                  ERRMSG('Number of chars greater tha-
+     A                                      n sentence length' 40)
+     A                                  8 23'Right . . . :'
+     A            RIGHT          2N 0B  8 37
+     A  41                                  ERRMSG('Number of chars greater tha-
+     A                                      n sentence length' 41)
+     A                                  7 44'Substring:'
+     A                                      COLOR(BLU)
+     A                                  8 44'From. . . . :'
+     A            SUBSF          2N 0B  8 58
+     A  42                                  ERRMSG('Initial position greater th-
+     A                                      an sentence length' 42)
+     A                                  8 62'Chars. . . . :'
+     A            SUBSC          2N 0B  8 77
+     A  43                                  ERRMSG('Number of chars greater tha-
+     A                                      n sentence length' 43)
+     A                                 10  3'Start position and number of chara-
+     A                                      cters to convert:'
+     A                                      COLOR(BLU)
+     A                                 11  3'Lower start. . . :'
+     A            LOWERS         2N 0B 11 22
+     A  44                                  ERRMSG('Start position greater than-
+     A                                       sentence length' 44)
+     A  45                                  ERRMSG('Start position must be grea-
+     A                                      ter than zero' 45)
+     A                                 11 27'Lower chars. . . :'
+     A            LOWERC         2N 0B 11 46
+     A  46                                  ERRMSG('Number of chars from start -
+     A                                      position greater than sentence leng-
+     A                                      ht' 46)
+     A                                 12  3'Upper start. . . :'
+     A            UPPERS         2N 0B 12 22
+     A  47                                  ERRMSG('Number of chars greater tha-
+     A                                      n sentence length' 47)
+     A  48                                  ERRMSG('Start position must be grea-
+     A                                      ter than zero' 48)
+     A                                 12 27'Upper chars. . . :'
+     A            UPPERC         2N 0B 12 46
+     A  49                                  ERRMSG('Number of chars from start -
+     A                                      position greater than sentence leng-
+     A                                      ht' 49)
+     A          R RESULT                    OVERLAY
+     A                                 14  3'Results:'
+     A                                      COLOR(BLU)
+     A                                 14 18'*NATURAL'
+     A                                      COLOR(WHT)
+     A                                 15  3'%LEN . . . . :'
+     A            LENNAT         2N 0O 15 18
+     A                                 16  3'%CHARCOUNT . :'
+     A            CHARNAT        2N 0O 16 18
+     A                                 17  3'%LEFT. . . . :'
+     A            LEFTNAT       30   O 17 18
+     A                                 18  3'%RIGHT . . . :'
+     A            RIGHTNAT      30   O 18 18
+     A                                 21  3'%UPPER . . . :'
+     A            UPPERNAT      30   O 21 18
+     A                                 20  3'%LOWER . . . :'
+     A            LOWERNAT      30   O 20 18
+     A                                 14 49'*STDCHARSIZE'
+     A                                      COLOR(WHT)
+     A            LENSTD         2N 0O 15 49
+     A            CHARSTD        2N 0O 16 49
+     A            LEFTSTD       30   O 17 49
+     A            RIGHTSTD      30   O 18 49
+     A            UPPERSTD      30   O 21 49
+     A            LOWERSTD      30   O 20 49
+     A                                 19  3'%SUBST . . . :'
+     A            SUBSTNAT      30     19 18
+     A            SUBSTSTD      30     19 49
+     A          R FKEYS                     OVERLAY
+     A                                 23  2'F3=Exit'
+     A                                      COLOR(BLU)
+
+     A*%%RS+<record-sequences>
+     A*%%RS+ <sequence name="V7R5T3D">
+     A*%%RS+  <device type="display" width="80" height="24" />
+     A*%%RS+  <record-write record-format="HEADER" />
+     A*%%RS+  <record-write record-format="PROMPT" />
+     A*%%RS+  <record-write record-format="RESULT" />
+     A*%%RS+  <record-write record-format="FKEYS" />
+     A*%%RS+ </sequence>
+     A*%%RS </record-sequences> 
