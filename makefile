@@ -11,7 +11,7 @@ v7r5tr3r.rpgle: v7r5tr3d.dspf
 %.rpgle:
 	system -s "CHGATR OBJ('./qrpglesrc/$*.rpgle') ATR(*CCSID) VALUE(1252)"
 	liblist -a $(LIBLIST);\
-	system "CRTBNDRPG OBJ($(BIN_LIB)/$*) SRCSTMF('./qrpglesrc/$*.rpgle') REPLACE(*YES) DBGVIEW(*SOURCE) TGTRLS($(TGTRLS)) OPTION(*EVENTF)"
+	system "CRTBNDRPG PGM($(BIN_LIB)/$*) SRCSTMF('./qrpglesrc/$*.rpgle') REPLACE(*YES) DBGVIEW(*SOURCE) TGTRLS($(TGTRLS)) OPTION(*EVENTF)"
 
 
 %.dspf:
